@@ -46,6 +46,18 @@ class PushBulletHelper
         $this->guzzle = new \GuzzleHttp\Client();
     }
     /**
+     * Envia una notificacion Push al cliente
+     */
+    public function sendPushNote($senderIden, $title, $body)
+    {
+        return $this->generateRequest('POST', 'pushes', [
+            'type' => 'note',
+            'title' => $title,
+            'body' => $body,
+            'sender_iden' => $senderIden
+        ]);
+    }
+    /**
      * Obtiene los datos de la cuenta logueada
      * @return Object
      */
